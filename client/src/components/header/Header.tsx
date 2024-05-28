@@ -99,7 +99,7 @@ const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 100;
+  z-index: 10000;
   background-color: ${({ theme }) => theme.colors.white};
 `
 
@@ -124,13 +124,14 @@ const HeaderBottom = styled.div<{ $isMenuOpen: boolean, $headerHeight: number }>
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.green};
   padding: 0.5rem 0;
   @media only screen and (max-width: 768px) {
+    z-index: 1000;
     position: fixed;
     align-items: flex-start;
     justify-content: flex-end;
-    top: calc(${({ $headerHeight }) => $headerHeight}px + 1rem);
+    top: calc(${({ $headerHeight }) => $headerHeight}px + 1.1rem);
     right: ${({ $isMenuOpen }) => ($isMenuOpen ? '0' : '-100%')};
     width: 100%;
     height: 100vh;
@@ -147,7 +148,7 @@ const Logo = styled.div`
   svg {
     width: 5.4rem;
     height: auto;
-    color: ${({ theme }) => theme.colors.main};
+    color: ${({ theme }) => theme.colors.orange};
   }
   @media only screen and (max-width: 768px) {
     gap: 0.5rem;
@@ -187,21 +188,21 @@ const Signup = styled.button`
   font-size: ${({ theme }) => theme.fontSizes.m};
   background-color: ${({ theme }) => theme.colors.lightGray};
   &:hover {
-    background-color: ${({ theme }) => theme.colors.senary};
+    background-color: ${({ theme }) => theme.colors.mediumGray};
     color: ${({ theme }) => theme.colors.textDark};
   }
 `
 
 const Login = styled.button`
   color: ${({ theme }) => theme.colors.textDark};
-  background-color: ${({ theme }) => theme.colors.main};
+  background-color: ${({ theme }) => theme.colors.orange};
   border: none;
   border-radius: 0.2rem;
   width: 10rem;
   padding: 0.3em 0;
   font-size: ${({ theme }) => theme.fontSizes.m};
   &:hover {
-    background-color: ${({ theme }) => theme.colors.mainHover};
+    background-color: ${({ theme }) => theme.colors.orangeHover};
   }
 `
 
@@ -247,13 +248,13 @@ const NavLink = styled.button<{ $isActive: boolean }>`
   margin: 0.8rem 4rem;
   color: ${({ $isActive }) => ($isActive ? '#DE9E36' : '#F3F3F3')};
   &:hover {
-    color: ${({ theme }) => theme.colors.main};
+    color: ${({ theme }) => theme.colors.orange};
   }
   &:hover::after {
     content: "";
     width: 30%;
     height: 0.2rem;
-    background-color: ${({ theme }) => theme.colors.main};
+    background-color: ${({ theme }) => theme.colors.orange};
     position: absolute;
     bottom: 0;
     left: 4rem;

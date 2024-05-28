@@ -22,28 +22,27 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
   width: 25px;
-  height: 20px;
+  height: 25px;
   cursor: pointer;
 `;
 
 const Bar = styled.div<{ $isOpen: boolean }>`
   width: 25px;
-  height: 3px;
-  background-color:  ${({ theme }) => theme.colors.quaternary};
-  margin: 3px;
-  border-radius: 10px;
+  height: 2px;
+  background-color:  ${({ theme }) => theme.colors.black};
+  border-radius: 1px;
   transition: all .12s ease-in-out;
   transform-origin: center;
 
   ${({ $isOpen }) => $isOpen && `
     &:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
+      transform: translateY(7px) rotate(45deg);
     }
     &:nth-child(2) {
       opacity: 0;
     }
     &:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
+      transform: translateY(-9px) rotate(-45deg);
     }
   `}
 `;

@@ -8,7 +8,7 @@ interface FAQArrowProps {
 const FAQArrow: FC<FAQArrowProps> = ({ isAnswerVisible }) => {
 
     return (
-        <ArrowWrapper $isAnswerVisible={isAnswerVisible}>
+        <ArrowWrapper $isAnswerVisible={isAnswerVisible} aria-expanded={isAnswerVisible ? true : false}>
             <svg
                 width="12"
                 height="8"

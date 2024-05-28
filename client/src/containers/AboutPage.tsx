@@ -18,7 +18,7 @@ const AboutPage: React.FC = () => (
         </Block>
         
       </Blocks>
-			<Link to="/dashboard"><GetStarted>Get Started</GetStarted></Link>
+			<GetStarted to="/signup">Get Started</GetStarted>
       
       
     </Container>
@@ -59,18 +59,19 @@ const Block = styled.div`
   text-align: justify;
 `
 
-const GetStarted = styled.button`
+const GetStarted = styled(Link)`
   color: #ffffff;
-  background-color: ${({ theme }) => theme.colors.main};
+  background-color: ${({ theme }) => theme.colors.orange};
   border: none;
   border-radius: 1rem;
   padding: 1rem 4rem;
-  font-size: ${({ theme }) => theme.fontSizes.xl};
+  font-size: ${({ theme }) => theme.fontSizes.l};
   text-transform: uppercase;
   box-shadow: inset 2px 2px 4px rgba(255, 248, 212, 0.81),
               inset -2px -2px 8px rgba(0, 0, 0, 0.4);
+  transition: .12s;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.mainHover};
+    background-color: ${({ theme }) => theme.colors.orangeHover};
     color: ${({ theme }) => theme.colors.textDark};
   }
   &:active {

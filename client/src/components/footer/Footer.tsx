@@ -11,6 +11,20 @@ const Footer: React.FC = () => {
     <FooterContainer>
       <ContentContainer>
         <FooterContent>
+        <FooterBranding>
+            <LogoContainer>
+              <Copyright>&#169; {year} <a href="https://benhensordev.netlify.app/" rel="noreferrer" target="_blank">Ben Hensor</a></Copyright>
+              <FooterLogo src={Logo} alt="Paprback Logo" />
+            </LogoContainer>
+            <FooterSocials>
+              <a href="https://github.com/benhensor/paprback" rel='noreferrer' target='_blank'>
+                <FooterSocialIcon src={gbWhite} alt="gitHub" />
+              </a>
+              <a href="https://www.youtube.com/watch?v=UB3zVqyRQZQ" rel='noreferrer' target='_blank'>
+                <FooterSocialIcon src={ytWhite} alt="youtube" />
+              </a>
+            </FooterSocials>
+          </FooterBranding>
           <CompanyDetails>
             <h4 className="footer-link">Customer Services</h4>
               <CompanyLink className="footer-link">Contact Us</CompanyLink>
@@ -22,20 +36,6 @@ const Footer: React.FC = () => {
               <CompanyLink className="footer-link">Privacy & Cookies</CompanyLink>
               <CompanyLink className="footer-link">Terms & Conditions</CompanyLink>
           </CompanyDetails>
-          <FooterBranding>
-            <LogoContainer>
-              <FooterLogo src={Logo} alt="Paprback Logo" />
-            </LogoContainer>
-            <Copyright>&#169; {year} <a href="https://benhensordev.netlify.app/" rel="noreferrer" target="_blank">Ben Hensor</a></Copyright>
-            <FooterSocials>
-              <a href="https://github.com/benhensor/paprback" rel='noreferrer' target='_blank'>
-                <FooterSocialIcon src={gbWhite} alt="gitHub" />
-              </a>
-              <a href="https://www.youtube.com/watch?v=UB3zVqyRQZQ" rel='noreferrer' target='_blank'>
-                <FooterSocialIcon src={ytWhite} alt="youtube" />
-              </a>
-            </FooterSocials>
-          </FooterBranding>
         </FooterContent>
       </ContentContainer>
     </FooterContainer>
@@ -48,7 +48,7 @@ const FooterContainer = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.quaternary};
+  background-color: ${({ theme }) => theme.colors.darkGray};
   text-align: center;
   display: flex;
   justify-content: center;
@@ -66,30 +66,35 @@ const ContentContainer = styled.div`
   @media screen and (max-width: 1199px) {
     padding: 3rem 1rem;
   }
+  @media screen and (max-width: 450px) {
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const FooterContent = styled.div`
   display: flex;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 450px) {
     flex-direction: column;
-    order: -1;
+    justify-content: center;
+    align-items: center;
   }
 `
 
 const CompanyDetails = styled.div`
   text-align: left;
   h4 {
-    color: ${({ theme }) => theme.colors.senary};
+    color: ${({ theme }) => theme.colors.mediumGray};
   }
 `
 
 const CompanyLink = styled.p`
-  color: ${({ theme }) => theme.colors.copyDkBg};
+  color: ${({ theme }) => theme.colors.darkerGray};
   font-size: ${({ theme }) => theme.fontSizes.s};
   transition: .12s;
   cursor: pointer;
   &:hover {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.mediumGray};
   }
 `
 
@@ -102,28 +107,32 @@ const FooterBranding = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
+  @media screen and (max-width: 450px) {
+    position: static;
+    transform: none;
+    margin-bottom: 2rem;
+  }
 `
 
 const LogoContainer = styled.div`
-  margin-top: 2rem;
+
 `
 
 const FooterLogo = styled.img`
   width: 14rem;
-  fill: var(--background);
+  color: ${({ theme }) => theme.colors.orange};
 `
 
 const FooterSocials = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1vh;
+  gap: 1rem;
 `
 
 const FooterSocialIcon = styled.img`
-  margin: 0 0.5vw;
   width: 25px;
-  fill: var(--background);
   opacity: 0.5;
   
   &:hover {
@@ -132,13 +141,12 @@ const FooterSocialIcon = styled.img`
 `
 
 const Copyright = styled.div`
-  position: absolute;
-  top: 0;
+  color: ${({ theme }) => theme.colors.mediumGray};
   a {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.mediumGray};
     transition: .12s;
     &:hover {
-      color: ${({ theme }) => theme.colors.main};
+      color: ${({ theme }) => theme.colors.orange};
     }
   }
 `

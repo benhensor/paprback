@@ -1,10 +1,10 @@
 import React from 'react';
 
 const BookPage: React.FC = () => (
-  <div>
+  <section>
     <h1>Book Details</h1>
     {/* Book details content */}
-  </div>
+  </section>
 );
 
 export default BookPage;

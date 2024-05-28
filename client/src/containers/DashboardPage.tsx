@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Dashboard: React.FC = () => (
-  <div>
+  <section>
     <h1>Dashboard</h1>
     {/* User dashboard content */}
-  </div>
+  </section>
 );
 
 export default Dashboard;

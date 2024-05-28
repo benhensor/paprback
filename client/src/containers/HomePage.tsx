@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { homePageData } from '../assets/data/data'
 import HeroImage from '../assets/images/bookshelfHero.webp'
 import PaperTexture from '../assets/images/paper.webp'
@@ -17,7 +18,7 @@ const HomePage: React.FC = () => {
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
           </TitlePanel>
-          <Signup>Get Started</Signup>
+          <Signup to="/browse">Browse Books</Signup>
         </Hero>
         <CTA>
           <PaperImage src={PaperTexture} alt="Paper texture" />
@@ -40,10 +41,6 @@ export default HomePage;
 
 const Home = styled.div`
   width: 100%;
-  margin: 0 auto;
-  /* @media only screen and (max-width: 768px) {
-    padding: 0 5%;
-  } */
 `
 const HomeContainer = styled.div`
   width: 100%;
@@ -51,11 +48,10 @@ const HomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 3rem;
 `
 const Hero = styled.div<{ $heroImage: string }>`
   width: 100%;
-  height: 70rem;
+  height: 100rem;
   position: relative;
   overflow: hidden;
   &:before {
@@ -92,11 +88,12 @@ const TitlePanel = styled.div`
   background-color: rgba(35, 49, 12, 0.152); 
   backdrop-filter: blur(10px);
   transition: 0.2s;
-  opacity: 1; /* Initially hide the element */
-  z-index: 2;
-  transition: opacity 0.6s ease;
   @media only screen and (max-width: 768px) {
     border-radius: 0;
+  }
+  @media only screen and (max-width: 768px) {
+    gap: 0;
+    padding: 2rem 10rem;
   }
 `
 const Title = styled.h1`
@@ -104,6 +101,7 @@ const Title = styled.h1`
   font-weight: 300;
   font-size: ${({ theme }) => theme.fontSizes.xxxxxl};
   color: ${({ theme }) => theme.colors.textLight};
+  margin-bottom: 0;
   z-index: 1;
   @media only screen and (max-width: 768px) {
     font-size: ${({ theme }) => theme.fontSizes.xxxxl};
@@ -115,26 +113,27 @@ const Subtitle = styled.h2`
   letter-spacing: 0.2rem;
   font-size: ${({ theme }) => theme.fontSizes.xl};
   color: ${({ theme }) => theme.colors.textLight};
+  margin-bottom: 0;
   @media only screen and (max-width: 768px) {
     font-size: ${({ theme }) => theme.fontSizes.m};
   }
 `
-const Signup = styled.button`
+const Signup = styled(Link)`
   position: absolute;
   left: 50%;
   bottom: 4rem;
   transform: translateX(-50%);
   color: #ffffff;
-  background-color: ${({ theme }) => theme.colors.main};
+  background-color: ${({ theme }) => theme.colors.orange};
   border: none;
-  border-radius: 1rem;
-  padding: 1em 4rem;
-  font-size: ${({ theme }) => theme.fontSizes.xl};
+  border-radius: 0.5rem;
+  padding: 2rem 4rem;
+  font-size: ${({ theme }) => theme.fontSizes.l};
   text-transform: uppercase;
   box-shadow: inset 2px 2px 4px rgba(255, 248, 212, 0.81),
               inset -2px -2px 8px rgba(0, 0, 0, 0.4);
   &:hover {
-    background-color: ${({ theme }) => theme.colors.mainHover};
+    background-color: ${({ theme }) => theme.colors.orangeHover};
     color: ${({ theme }) => theme.colors.textDark};
   }
   &:active {
@@ -142,7 +141,7 @@ const Signup = styled.button`
               inset 2px 2px 8px rgba(0, 0, 0, 0.4);
   }
   @media only screen and (max-width: 768px) {
-    font-size: ${({ theme }) => theme.fontSizes.l};
+    font-size: ${({ theme }) => theme.fontSizes.m};
     padding: 1rem 3rem;
   }
 `
@@ -150,7 +149,7 @@ const CTA = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.darkGreen};
   padding: 5rem 0;
   position: relative;
   @media only screen and (max-width: 768px) {

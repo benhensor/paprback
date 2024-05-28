@@ -168,15 +168,29 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   main {
+    position: relative;
     width: 100%;
-    margin: 0 auto;
+    height: 100vh;
+    overflow-y: auto;
   }
 
   section {
     width: 100%;
     max-width: 120rem;
     text-align: center;
-    margin: 0 auto;
+    margin: 15rem auto;
+  }
+
+  h1 {
+    font-size: clamp(${({ theme }) => theme.fontSizes.xxl}, 5vw, ${({ theme }) => theme.fontSizes.xxxxl});
+    font-weight: 300;
+    margin-bottom: 5rem;
+  }
+
+  h2 {
+    font-size: clamp(${({ theme }) => theme.fontSizes.xl}, 3vw, ${({ theme }) => theme.fontSizes.xxxl});
+    font-weight: 300;
+    margin-bottom: 3rem;
   }
 
   a {
@@ -199,8 +213,8 @@ export const GlobalStyles = createGlobalStyle`
       padding: 0 1rem;
     }
   }
-  
-  /* 
-  @media only screen and (max-width: 768px) {}
-  @media only screen and (max-width: 450px) {} */
+  /* @media only screen and (max-width: 768px) {
+  }
+  @media only screen and (max-width: 450px) {
+  } */
 `;

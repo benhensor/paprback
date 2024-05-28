@@ -9,6 +9,11 @@ const FAQPage: React.FC = () => {
 	const toggleAnswerVisibility = (index: number) => {
     setAnswerVisibilities(prev => {
       const updatedVisibilities = [...prev];
+			for (let i = 0; i < updatedVisibilities.length; i++) {
+				if (i !== index) {
+					updatedVisibilities[i] = false;
+				}
+			}
       updatedVisibilities[index] = !updatedVisibilities[index];
       return updatedVisibilities;
     });
@@ -19,7 +24,7 @@ const FAQPage: React.FC = () => {
 			<Title>FAQ</Title>
 			<Content>
 				<FAQItem>
-					<FAQQuestion onClick={() => toggleAnswerVisibility(0)}>
+					<FAQQuestion onClick={() => toggleAnswerVisibility(0)} $isVisible={answerVisibilities[0]}>
 						How does Paprback work?
 						<FAQArrow isAnswerVisible={answerVisibilities[0]}/>
 					</FAQQuestion>
@@ -34,7 +39,7 @@ const FAQPage: React.FC = () => {
 						</FAQAnswer>
 				</FAQItem>
 				<FAQItem>
-					<FAQQuestion onClick={() => toggleAnswerVisibility(1)}>
+					<FAQQuestion onClick={() => toggleAnswerVisibility(1)} $isVisible={answerVisibilities[1]}>
 						How do I list my books?
 						<FAQArrow isAnswerVisible={answerVisibilities[1]}/>
 					</FAQQuestion>
@@ -49,7 +54,7 @@ const FAQPage: React.FC = () => {
 						</FAQAnswer>
 				</FAQItem>
 				<FAQItem>
-					<FAQQuestion onClick={() => toggleAnswerVisibility(2)}>
+					<FAQQuestion onClick={() => toggleAnswerVisibility(2)} $isVisible={answerVisibilities[2]}>
 						How do I connect with other users?
 						<FAQArrow isAnswerVisible={answerVisibilities[2]}/>
 					</FAQQuestion>
@@ -79,10 +84,9 @@ const Title = styled.h1`
 const Content = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	gap: 2rem;
-	max-width: 120rem;
+	gap: 4rem;
 	margin: 0 auto;
 	width: 100%;
 	@media only screen and (max-width: 1199px) {
@@ -101,37 +105,41 @@ const Content = styled.div`
 const FAQItem = styled.div`
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	width: 100%;
 	max-width: 80rem;
 	overflow: hidden;
+	border-bottom: 2px solid ${({ theme }) => theme.colors.greenAlpha};
+	transition: all .3s;
+	cursor: pointer;
 `
 
-const FAQQuestion = styled.button`
-	background: none;
-	border: none;
-	outline: none;
+const FAQQuestion = styled.button<{ $isVisible: boolean }>`
 	width: 100%;
-	text-align: left;
-	padding: 10px;
-	font-size: 18px;
-	cursor: pointer;
-	border-bottom: 1px solid #ccc;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background: none;
+	border: none;
+	outline: none;
+	text-align: left;
+	padding: 0;
+	font-size: clamp(${({ theme }) => theme.fontSizes.m}, 3vw, ${({ theme }) => theme.fontSizes.l});
+	color: ${({ $isVisible }) => ($isVisible ? '#DE9E36' : '#333')};
 	overflow: hidden;
-	z-index: 1;
+	position: relative;
 `
 
 const FAQAnswer = styled.div<{ $isVisible: boolean }>`
-  height: ${({ $isVisible }) => ($isVisible ? '10rem' : '0')}; 
+  max-height: ${({ $isVisible }) => ($isVisible ? '20rem' : '0')}; 
 	opacity: ${({ $isVisible }) => ($isVisible ? '1' : '0')}; 
-  overflow: hidden; 
-  padding: 1rem;
-  font-size: 1.6rem;
-  color: #777;
+	overflow: hidden;
+  padding-top: ${({ $isVisible }) => ($isVisible ? '2rem' : '0')};
+	padding-bottom: 1rem;
+	line-height: 1.6;
+  font-size: clamp(${({ theme }) => theme.fontSizes.s}, 2vw, ${({ theme }) => theme.fontSizes.m});
+  color: ${({ theme }) => theme.colors.darkerGray};
   text-align: justify;
-	z-index: 0;
   transition: all .3s;
 `;
 

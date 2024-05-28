@@ -10,13 +10,13 @@ const LoginSignupPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <section>
       {isLogin ? (
         <Login toggle={toggleForm} />
       ) : (
         <Signup toggle={toggleForm} />
       )}
-    </div>
+    </section>
   );
 };
 

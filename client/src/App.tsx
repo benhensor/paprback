@@ -15,6 +15,7 @@ const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [headerHeight, setHeaderHeight] = useState<number>(0);
 
+
   useEffect(() => {
     const headerElement = document.getElementById('header');
     if (headerElement) {
