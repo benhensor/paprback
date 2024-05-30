@@ -13,6 +13,23 @@ CREATE TABLE users (
   longitude FLOAT
 );
 
+CREATE TABLE users (
+  id BIGSERIAL PRIMARY KEY NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(50) NOT NULL,
+  phone VARCHAR(50) NOT NULL,
+  address_line1 VARCHAR(100) NOT NULL,
+  address_line2 VARCHAR(100) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  postcode VARCHAR(20) NOT NULL,
+  latitude FLOAT,
+  longitude FLOAT,
+  UNIQUE (email)
+);
+
 INSERT INTO users (id, first_name, last_name, username, email, phone, address_line_1, address_line_2, city, postcode, latitude, longitude)
 VALUES
 

@@ -250,15 +250,6 @@ const NavLink = styled.button<{ $isActive: boolean }>`
   &:hover {
     color: ${({ theme }) => theme.colors.orange};
   }
-  &:hover::after {
-    content: "";
-    width: 30%;
-    height: 0.2rem;
-    background-color: ${({ theme }) => theme.colors.orange};
-    position: absolute;
-    bottom: 0;
-    left: 4rem;
-  }
   @media only screen and (max-width: 768px) {
     button {
       font-size: ${({ theme }) => theme.fontSizes.xxl};

@@ -178,7 +178,7 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     max-width: 120rem;
     text-align: center;
-    margin: 15rem auto;
+    margin: 0 auto;
   }
 
   h1 {

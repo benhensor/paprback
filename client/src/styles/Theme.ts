@@ -7,6 +7,7 @@ export const theme: DefaultTheme = {
     green: '#3E4C41',
     greenAlpha: '#3E4C4150',
     darkGreen: '#223023',
+    blue: '#006cab',
     lightGray: '#F3F3F3',
     mediumGray: '#aaa',
     darkerGray: '#5C5C5C',
